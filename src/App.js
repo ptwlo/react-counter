@@ -6,6 +6,8 @@ constructor(){
   super();
   this.state = {
     count: 0,
+    countPlus: 1,
+    label: "Single",
   }
 }
 // this is where we are going to put our methods.
@@ -13,7 +15,7 @@ constructor(){
 increment = () => {
   if ( this.state.count < 20){
     this.setState ({
-        count: this.state.count + 1
+        count: this.state.count + this.state.countPlus
     })
   }
 
@@ -21,7 +23,7 @@ increment = () => {
 decrement = () => {
   if( this.state.count > 0){
     this.setState ({
-      count: this.state.count - 1
+      count: this.state.count - this.state.countPlus
     })
   }
 }
@@ -31,15 +33,19 @@ reset = () => {
     count: this.state.count = 0
   })
 }
-toggleIn = () =>{
-  this.setState ({
-    count: this.state.count = 2
-  })
+toggleButton = () =>{
+  if(this.state.label === "Single"){
+    this.setState ({
+      label: this.state.label = "Double",
+      countPlus: this.state.countPlus = 2
+    })
+  }else{
+    this.setState ({
+      label: this.state.label = "Single",
+      countPlus: this.state.countPlus = 1
+    })
+  }
 }
-toggleDe = ()=>{
-
-}
-
   render(){
     return (
       <div className="container">
@@ -49,9 +55,7 @@ toggleDe = ()=>{
             <button type="button" onClick={this.increment}>Increment</button>
             <button type="button" onClick={this.decrement}>Decrement</button>
             <button type="button" onClick={this.reset}>Reset</button>
-            <button type="button" onClick={this.toggleIn}>Toggle increment</button>
-            <button type="button" onClick={this.toggleDe}>Toggle decrement</button>
-
+            <button type="button" onClick={this.toggleButton}>Toggle: {this.state.label}</button>
           </div>
       </div>
     )
