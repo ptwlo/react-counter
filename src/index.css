@@ -59,4 +59,5 @@ body {
 
 .counter button:hover {
   background-color: #65878F;
+  margin-bottom: 40px;
 }
